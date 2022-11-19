@@ -14,6 +14,7 @@ func main() {
 		game.PlayBall()
 		if game.VHits > 5 || game.HHits > 5 {
 			fmt.Println("5 Hitter!!")
+			return
 		}
 	}
 }
