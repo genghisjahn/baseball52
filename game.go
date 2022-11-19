@@ -225,6 +225,9 @@ func inningProcess(ip *InningPart, t *Team) {
 		ip.Plays = append(ip.Plays, play)
 	}
 	if r == 4 {
+		if play.FirstBase != nil && play.SecondBase != nil && play.Thirdbase != nil {
+			fmt.Println("Grand Slam!")
+		}
 		ip.Hits++
 		play.Description = "home run"
 		if play.Thirdbase != nil {

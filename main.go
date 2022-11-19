@@ -12,8 +12,8 @@ func main() {
 		game.Home = home
 		game.Visitor = visitor
 		game.PlayBall()
-		if game.VHits > 5 || game.HHits > 5 {
-			fmt.Println("5 Hitter!!")
+		if game.VHits == 0 || game.HHits == 0 {
+			fmt.Println("No Hitter!!")
 			return
 		}
 	}
