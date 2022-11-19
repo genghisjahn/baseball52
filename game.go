@@ -1,10 +1,8 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
 	"math/rand"
-	"os"
 	"strings"
 	"time"
 )
@@ -13,9 +11,11 @@ type Game struct {
 	Home    Team     `json:"home_team"`
 	Visitor Team     `json:"visitor_team"`
 	Innings []Inning `json:"innings"`
+	VHits   int
+	HHits   int
 }
 
-func (g Game) BoxScore() string {
+func (g *Game) BoxScore() string {
 	vname := g.Visitor.City
 	hname := g.Home.City
 	s := len(vname) - len(hname)
@@ -26,15 +26,25 @@ func (g Game) BoxScore() string {
 	}
 	vscore := 0
 	hscore := 0
+	vhits := 0
+	hhits := 0
+	vval, hval := "", ""
 	for _, v := range g.Innings {
+
+		vval += " " + fmt.Sprintf("%v", v.Top.Runs)
+		hval += " " + fmt.Sprintf("%v", v.Bottom.Runs)
 		vscore += v.Top.Runs
+		vhits += v.Top.Hits
 		hscore += v.Bottom.Runs
+		hhits += v.Bottom.Hits
+
 	}
 
 	result := ""
-
-	result = vname + " | " + fmt.Sprintf("%v", vscore) + "\n"
-	result += hname + " | " + fmt.Sprintf("%v", hscore) + "\n\n"
+	result = vname + " | " + vval + "|" + "Runs:" + fmt.Sprintf("%v", vscore) + "|Hits: " + fmt.Sprintf("%v", vhits) + "\n"
+	result += hname + " | " + hval + "|" + "Runs:" + fmt.Sprintf("%v", hscore) + "|Hits: " + fmt.Sprintf("%v", hhits) + "\n"
+	g.HHits = hhits
+	g.VHits = vhits
 	return result
 }
 
@@ -78,12 +88,10 @@ func (g *Game) PlayBall() {
 	gameover := false
 
 	for !gameover {
-		reader := bufio.NewReader(os.Stdin)
 		i := Inning{}
 		i.Number = len(g.Innings) + 1
 
 		fmt.Println("Top of inning " + fmt.Sprintf("%v", i.Number) + ". The " + g.Visitor.City + " " + g.Visitor.Mascot + " are up.")
-		_, _ = reader.ReadString('\n')
 		for i.Top.Outs < 3 {
 			inningProcess(&i.Top, &g.Visitor)
 		}
@@ -103,7 +111,6 @@ func (g *Game) PlayBall() {
 		if !gameover {
 
 			fmt.Println("Bottom of inning " + fmt.Sprintf("%v", i.Number) + ". The " + g.Home.City + " " + g.Home.Mascot + " are up.")
-			_, _ = reader.ReadString('\n')
 			for i.Bottom.Outs < 3 {
 				inningProcess(&i.Bottom, &g.Home)
 			}
@@ -117,23 +124,20 @@ func (g *Game) PlayBall() {
 				if vscore != hscore {
 					gameover = true
 					showFinal(g.Visitor.Mascot, g.Home.Mascot, vscore, hscore)
-					//g.ShowPlays()
 				}
 			}
 
 		}
 		g.Innings = append(g.Innings, i)
-
+		fmt.Println(g.BoxScore())
+		//g.ShowPlays()
 	}
-	g.ShowPlays()
 
 }
 func showFinal(vname, hname string, vscore, hscore int) {
 	fmt.Println("Final Score...")
 	fmt.Println(vname + " " + fmt.Sprintf("%v", vscore))
 	fmt.Println(hname + " " + fmt.Sprintf("%v", hscore))
-	reader := bufio.NewReader(os.Stdin)
-	_, _ = reader.ReadString('\n')
 
 }
 
@@ -245,7 +249,6 @@ func inningProcess(ip *InningPart, t *Team) {
 	fmt.Println(play.AtBat.LastName, " ", play.Description)
 	fmt.Println(" ")
 	play.AtBat = nil
-	//_, _ = reader.ReadString('\n')
 	fmt.Printf("Outs %d,Hits %d, Runs %d\n", ip.Outs, ip.Hits, ip.Runs)
 	t.BO++
 }
