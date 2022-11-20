@@ -9,6 +9,7 @@
         {"position":"left field", "number":0,"first_name":"","middle_name":"","nick_name":"","last_name":""},
         {"position":"center field", "number":0,"first_name":"","middle_name":"","nick_name":"","last_name":""},
         {"position":"right field", "number":0,"first_name":"","middle_name":"","nick_name":"","last_name":""},
+        {"position":"designated hitter", "number":0,"first_name":"","middle_name":"","nick_name":"","last_name":""},
         {"position":"pitcher 1","number":0,"first_name":"","middle_name":"","nick_name":"","last_name":"","is_pithcer":true},
         {"position":"pitcher 2","number":0,"first_name":"","middle_name":"","nick_name":"","last_name":"","is_pithcer":true},
         {"position":"pitcher 3","number":0,"first_name":"","middle_name":"","nick_name":"","last_name":"","is_pithcer":true},

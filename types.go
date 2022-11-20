@@ -56,33 +56,35 @@ func (t *Team) AddPlayer() Player {
 	case 7:
 		p.Position = "right field"
 	case 8:
+		p.Position = "designated hitter"
+	case 9:
 		p.Position = "pitcher 1"
 		p.IsPitcher = true
-	case 9:
+	case 10:
 		p.Position = "pitcher 2"
 		p.IsPitcher = true
 
-	case 10:
+	case 11:
 		p.Position = "pitcher 3"
 		p.IsPitcher = true
 
-	case 11:
+	case 12:
 		p.Position = "pitcher 4"
 		p.IsPitcher = true
 
-	case 12:
+	case 13:
 		p.Position = "pitcher 5"
 		p.IsPitcher = true
 
-	case 13:
+	case 15:
 		p.Position = "pitcher 6"
 		p.IsPitcher = true
 
-	case 14:
+	case 16:
 		p.Position = "pitcher 7"
 		p.IsPitcher = true
 
-	case 15:
+	case 17:
 		p.Position = "pitcher 8"
 		p.IsPitcher = true
 	}
