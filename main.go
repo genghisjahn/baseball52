@@ -8,7 +8,7 @@ func main() {
 	// return
 
 	var home, visitor Team
-	home.LoadTeam("san_jose_valley_yak.json")
+	home.LoadTeam("san_jose_valley_yaks.json")
 	visitor.LoadTeam("norfolk_ocean_oysters.json")
 
 	for {
