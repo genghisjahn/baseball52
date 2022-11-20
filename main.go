@@ -4,8 +4,8 @@ import "fmt"
 
 func main() {
 
-	makeTeams()
-	return
+	// makeTeams()
+	// return
 
 	var home, visitor Team
 	home.LoadTeam("san_jose_valley_yak.json")
