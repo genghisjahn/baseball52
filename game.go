@@ -1,8 +1,10 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"math/rand"
+	"os"
 	"strings"
 	"time"
 )
@@ -114,6 +116,10 @@ func (g *Game) PlayBall() {
 			for i.Bottom.Outs < 3 {
 				inningProcess(&i.Bottom, &g.Home)
 			}
+			reader := bufio.NewReader(os.Stdin)
+			fmt.Println(g.BoxScore())
+			reader.ReadString('\n')
+
 			if len(g.Innings) >= 8 {
 				vscore := 0
 				hscore := 0
@@ -253,6 +259,8 @@ func inningProcess(ip *InningPart, t *Team) {
 	fmt.Println(" ")
 	play.AtBat = nil
 	fmt.Printf("Outs %d,Hits %d, Runs %d\n", ip.Outs, ip.Hits, ip.Runs)
+	reader := bufio.NewReader(os.Stdin)
+	reader.ReadString('\n')
 	t.BO++
 }
 

@@ -17,6 +17,7 @@
         {"position":"pitcher 5","number":0,"first_name":"","middle_name":"","nick_name":"","last_name":"","is_pithcer":true},
         {"position":"pitcher 6","number":0,"first_name":"","middle_name":"","nick_name":"","last_name":"","is_pithcer":true},
         {"position":"pitcher 7","number":0,"first_name":"","middle_name":"","nick_name":"","last_name":"","is_pithcer":true},
-        {"position":"pitcher 8","number":0,"first_name":"","middle_name":"","nick_name":"","last_name":"","is_pithcer":true}
+        {"position":"pitcher 8","number":0,"first_name":"","middle_name":"","nick_name":"","last_name":"","is_pithcer":true},
+        {"position":"pitcher 9","number":0,"first_name":"","middle_name":"","nick_name":"","last_name":"","is_pithcer":true}
     ]
 }
